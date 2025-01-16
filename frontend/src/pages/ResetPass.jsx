@@ -28,7 +28,7 @@ const ResetPassword = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const api = "https://book-management-system-4kpp.onrender.com/user/passwordchange";
+        const api = "http://localhost:7000/user/passwordchange";
         try {
             await axios.post(api, { userid, ...input });
             message.success("Password successfully changed!");

@@ -7,7 +7,7 @@ const ProductPage = () => {
 
     // Fetch all product data from the API
     const loadProducts = () => {
-        const api = "https://book-management-system-4kpp.onrender.com/books/datadisplay";
+        const api = "http://localhost:7000/books/datadisplay";
         axios.get(api).then((res) => {
             setProducts(res.data);
         });

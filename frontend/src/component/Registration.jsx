@@ -16,7 +16,7 @@ const Registration = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const api = "https://book-management-system-4kpp.onrender.com/user/registration";
+        const api = "http://localhost:7000/user/registration";
         axios.post(api, input).then(() => {
             alert("You are successfully registered!");
             navigate("/login");

@@ -12,7 +12,7 @@ const Update = () => {
   const navigate = useNavigate();
 
   const loadData = () => {
-    let api = "https://book-management-system-4kpp.onrender.com/books/datadisplay";
+    let api = "http://localhost:7000/books/datadisplay";
     axios.get(api).then((res) => {
       console.log(res.data);
       setMydata(res.data);
@@ -24,7 +24,7 @@ const Update = () => {
   }, []);
 
   const myDel = (id) => {
-    let api = "https://book-management-system-4kpp.onrender.com/books/datadelete";
+    let api = "http://localhost:7000/books/datadelete";
     axios.post(api, { id: id }).then((res) => {
       alert("data deleted");
       loadData();

@@ -16,7 +16,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            let api = "https://book-management-system-4kpp.onrender.com/user/login";
+            let api = "http://localhost:7000/user/login";
             const response = await axios.post(api, { email: email, password: password });
             if (response.status === 200) {
                 localStorage.setItem("username", response.data.name);

@@ -19,25 +19,25 @@ const UserRegistration = async (req, res) => {
 const UserLogin = async (req, res) => {
     const { email, password } = req.body;
     try {
-        const User = await UserModel.findOne({ email: email });
-        if (!User) {
-            res.status(400).send({ msg: 'invalid email' });
-        }
+        const user = await UserModel.findOne({ email: email });
+        if (!user) return res.status(400).send({ msg: 'Invalid email' });
 
-        const chkpass = await bcrypt.compare(password, User.password);
-        if (chkpass) {
-            res.status(200).send(User);
-        }
-        else {
-            res.status(400).send({ msg: "invalid password" });
-        }
+        const isPasswordCorrect = await bcrypt.compare(password, user.password);
+        if (!isPasswordCorrect) return res.status(400).send({ msg: 'Invalid password' });
 
+        res.status(200).send({
+            _id: user._id,
+            name: user.name,
+            email: user.email,
+            msg: 'Login successful',
+        });
     } catch (error) {
-        res.send("error in code")
+        console.error('Login error:', error);
+        res.status(500).send({ msg: 'Server error' });
     }
+};
 
 
-}
 
 const changePassword = async (req, res) => {
     const { userid, oldpassword, newpassword } = req.body;

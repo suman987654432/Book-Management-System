@@ -31,7 +31,7 @@ const Insert = () => {
     formData.append("image", image); // Append the image file
 
     try {
-      const api = "https://book-management-system-4kpp.onrender.com/books/datasave";
+      const api = "http://localhost:7000/books/datasave";
       await axios.post(api, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
